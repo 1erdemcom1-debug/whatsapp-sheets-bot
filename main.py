@@ -166,15 +166,18 @@ def process_voice_or_text(data: dict):
         send_whatsapp_message(chat_id, reply_text)
 
     except Exception as e:
-        print(f"İşlem hatası: {e}")
-
+        print(f"❌ DETAYLI İŞLEM HATASI: {type(e).__name__} - {e}")
+        import traceback
+        traceback.print_exc()
 
 @app.post("/webhook")
-async def webhook(request: Request, background_tasks: BackgroundTasks):
+async def webhook(request: Request):
     data = await request.json()
     print("--- GELEN WEBHOOK PAYLOAD ---")
     print(json.dumps(data, indent=2, ensure_ascii=False))
 
     if data.get("typeWebhook") == "incomingMessageReceived":
-        background_tasks.add_task(process_voice_or_text, data)
+        # BackgroundTasks yerine doğrudan çalıştırıyoruz ki logları anında görelim:
+        process_voice_or_text(data)
+
     return {"status": "ok"}

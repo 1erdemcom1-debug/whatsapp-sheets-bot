@@ -15,7 +15,7 @@ GREEN_API_INSTANCE_ID = os.getenv("GREEN_API_INSTANCE_ID")
 GREEN_API_TOKEN = os.getenv("GREEN_API_TOKEN")
 GOOGLE_SERVICE_ACCOUNT_FILE = os.getenv("GOOGLE_SERVICE_ACCOUNT_FILE", "credentials.json")
 # Eğer customers.json'da yoksa kullanılacak varsayılan Google Sheets ID'si
-DEFAULT_SPREADSHEET_ID = os.getenv("DEFAULT_SPREADSHEET_ID", "BURAYA_GOOGLE_SHEET_ID_YAZABILIRSIN")
+DEFAULT_SPREADSHEET_ID = os.getenv("DEFAULT_SPREADSHEET_ID", "https://docs.google.com/spreadsheets/d/1dZtjQ6XcwRk7CTHBfGAIgD2fs6KRIu_xTXFpLjlJF3U/edit?pli=1&gid=0#gid=0")
 
 # OpenAI ve Google Sheets İstemcileri
 openai.api_key = OPENAI_API_KEY
